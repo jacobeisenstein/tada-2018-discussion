@@ -2,4 +2,4 @@
 
 This repo contains two short jupyter notebooks related to papers at Text-as-Data 2018.
 
-The slides are available at https://jacobeisenstein.github.io/tada-2018-discussion/
+Slideshow versions of these notebooks are available at https://jacobeisenstein.github.io/tada-2018-discussion/
