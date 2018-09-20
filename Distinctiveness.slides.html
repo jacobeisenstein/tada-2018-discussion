@@ -15,8 +15,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <!-- General and theme style sheets -->
-<link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="reveal-js/css/reveal.css">
+<link rel="stylesheet" href="reveal-js/css/theme/simple.css" id="theme">
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -24,14 +24,14 @@ if( window.location.search.match( /print-pdf/gi ) ) {
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = 'reveal.js/css/print/pdf.css';
+        link.href = 'reveal-js/css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
 }
 
 </script>
 
 <!--[if lt IE 9]>
-<script src="reveal.js/lib/js/html5shiv.js"></script>
+<script src="reveal-js/lib/js/html5shiv.js"></script>
 <![endif]-->
 
 <!-- Loading the mathjax macro -->
@@ -12107,30 +12107,6 @@ a.anchor-link {
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[211]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># N_speeches, words_per_speech from appendix C of SI</span>
-<span class="k">def</span> <span class="nf">generate_data</span><span class="p">(</span><span class="n">log_p_word</span><span class="p">,</span><span class="n">num_faves</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">fave_bonus</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">N_speeches</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">words_per_speech</span><span class="o">=</span><span class="mi">200</span><span class="p">):</span>
-    <span class="n">faves</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="n">V</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">num_faves</span><span class="p">)</span>
-    <span class="n">log_p_word_c</span> <span class="o">=</span> <span class="n">log_p_word</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="n">log_p_word_c</span><span class="p">[</span><span class="n">faves</span><span class="p">]</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">fave_bonus</span><span class="p">)</span>
-    <span class="n">log_p_word_c</span> <span class="o">-=</span> <span class="n">logsumexp</span><span class="p">(</span><span class="n">log_p_word_c</span><span class="p">)</span>
-    
-    <span class="n">log_p_words</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">log_p_word</span><span class="p">,</span><span class="n">log_p_word</span><span class="p">,</span><span class="n">log_p_word_c</span><span class="p">])</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">multinomial</span><span class="p">(</span><span class="n">words_per_speech</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">log_p_words_s</span><span class="p">),</span><span class="n">N_speeches</span><span class="p">)</span>
-         <span class="k">for</span> <span class="n">log_p_words_s</span> <span class="ow">in</span> <span class="n">log_p_words</span><span class="p">]</span>
-
-    <span class="k">return</span> <span class="n">x</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[208]:</div>
 <div class="inner_cell">
     <div class="input_area">
@@ -12175,28 +12151,6 @@ a.anchor-link {
 </div>
 </div>
 
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[212]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># smoothing value from PC with the authors</span>
-<span class="k">def</span> <span class="nf">compute_D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">smoothing</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">bayesian</span><span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">bayesian</span><span class="p">:</span>
-        <span class="n">eta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">digamma</span><span class="p">(</span><span class="n">smoothing</span> <span class="o">+</span> <span class="n">x_i</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="o">-</span> <span class="n">digamma</span><span class="p">(</span><span class="n">V</span><span class="o">*</span><span class="n">smoothing</span> <span class="o">+</span> <span class="n">x_i</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="k">for</span> <span class="n">x_i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">eta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">smoothing</span> <span class="o">+</span> <span class="n">x_i</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">V</span><span class="o">*</span><span class="n">smoothing</span> <span class="o">+</span> <span class="n">x_i</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="k">for</span> <span class="n">x_i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span>
-    <span class="n">f_bar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="n">x_s</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span><span class="n">x_s</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">x_s</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span>
-    <span class="n">eta_bar</span> <span class="o">=</span> <span class="n">eta</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">f_bar</span><span class="p">,(</span><span class="n">eta</span> <span class="o">-</span> <span class="n">eta_bar</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">D</span>
-</pre></div>
-
-</div>
 </div>
 </div>
 
@@ -12486,8 +12440,8 @@ require(
       waitSeconds: 15
     },
     [
-      "reveal.js/lib/js/head.min.js",
-      "reveal.js/js/reveal.js"
+      "reveal-js/lib/js/head.min.js",
+      "reveal-js/js/reveal.js"
     ],
 
     function(head, Reveal){
@@ -12502,9 +12456,9 @@ require(
 
             // Optional libraries used to extend on reveal.js
             dependencies: [
-                { src: "reveal.js/lib/js/classList.js",
+                { src: "reveal-js/lib/js/classList.js",
                   condition: function() { return !document.body.classList; } },
-                { src: "reveal.js/plugin/notes/notes.js",
+                { src: "reveal-js/plugin/notes/notes.js",
                   async: true,
                   condition: function() { return !!document.body.classList; } }
             ]
