@@ -11770,6 +11770,9 @@ ul.typeahead-list > li > a {
 .ansi-bold { font-weight: bold; }
 
     </style>
+<style type="text/css">
+    
+    </style>
 
 
 <style type="text/css">
@@ -11920,21 +11923,21 @@ a.anchor-link {
 <ul>
 <li>Are non-democratic leaders constrained by institutions?</li>
 <li>To what extent is power located in the leader's person?</li>
-<li>Proposal: textual analysis can help answer these questions.</li>
+<li>Proposal: textual analysis can help answer these questions... maybe even in advance of concrete actions by the leader?</li>
 </ul>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="https://images-na.ssl-images-amazon.com/images/I/41wLinGcFLL._SX330_BO1,204,203,200_.jpg" alt="pennebaker"></p>
+<p><img src="https://qph.fs.quoracdn.net/main-qimg-d6c9a75c89bb984aae6bec8f199eb610-c" alt="Putin riding a bear"></p>
 
 </div>
 </div>
-</div></section><section>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12276,7 +12279,10 @@ a.anchor-link {
 <p>Additional validation: what words that tend to accompany these pronoun groups?</p>
 <ul>
 <li>Method: count words that appear within $k=7$ positions of a member of the pronoun group</li>
-<li>For each group, sort by $\log \frac{p(w \in N) }{p(w)}$</li>
+<li>For each group, sort by 
+\begin{equation}
+\eta_c = \log \frac{p(w \mid \text{ near pronoun of class } c) }{p(w)}
+\end{equation}</li>
 </ul>
 
 </div>
@@ -12314,10 +12320,10 @@ a.anchor-link {
 
  
  
-<div id="cb531d80-4cce-4499-918c-9267815c17c8"></div>
+<div id="6f8efcdd-8711-46ba-b872-7361c85c48fb"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#cb531d80-4cce-4499-918c-9267815c17c8');
+var element = $('#6f8efcdd-8711-46ba-b872-7361c85c48fb');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "d66d0a1617434da684555b208658436c", "version_major": 2, "version_minor": 0}
@@ -12369,10 +12375,10 @@ var element = $('#cb531d80-4cce-4499-918c-9267815c17c8');
 
  
  
-<div id="ed2961d6-50d7-4f20-93b9-6666a6c0e322"></div>
+<div id="e72e0165-a60b-4e04-b475-dd4abe59db43"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#ed2961d6-50d7-4f20-93b9-6666a6c0e322');
+var element = $('#e72e0165-a60b-4e04-b475-dd4abe59db43');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "8b9e09f83747494aa409843454a91666", "version_major": 2, "version_minor": 0}
@@ -12468,7 +12474,24 @@ his he them her they their him theirs she deprived futures deserve talents dead 
 
 </div>
 </div>
-</div></div></section></section>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h2><ul>
+<li>Pronouns are a well-validated measure from social psychology.</li>
+<li>If text could <strong>predict</strong> the transition to personalist rule, that would be incredibly cool.</li>
+<li>A crucial next step is generalization beyond idiosyncracies of these three particular leaders.</li>
+<li>Co-occurrence analysis mostly supports proposed hypothesis about what each pronoun group does.<ul>
+<li>(But again, within-speaker analysis would make this much more compelling.)</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section>
 </div>
 </div>
 
