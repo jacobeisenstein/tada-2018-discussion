@@ -11915,7 +11915,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section><section>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11942,7 +11942,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
+<h2 id="The-theory">The theory<a class="anchor-link" href="#The-theory">&#182;</a></h2><ul>
 <li>There is a well-elaborated theory of how <strong>pronouns</strong> relate to the speaker's internal mental state: happiness, depression, confidence, and insecurity. <ul>
 <li>initially from social psychologist James Pennebaker</li>
 <li>lots of follow-on work in fields like social computing and human-computer interaction </li>
@@ -11959,7 +11959,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12290,138 +12290,6 @@ a.anchor-link {
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[103]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">neighbors</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="n">Counter</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">tqdm_notebook</span><span class="p">(</span><span class="n">sotu</span><span class="o">.</span><span class="n">fileids</span><span class="p">()):</span>
-    <span class="k">for</span> <span class="n">set_name</span><span class="p">,</span><span class="n">word_set</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="s1">&#39;1ps&#39;</span><span class="p">,</span><span class="s1">&#39;1pp&#39;</span><span class="p">,</span><span class="s1">&#39;3p&#39;</span><span class="p">],[</span><span class="n">fps_set</span><span class="p">,</span><span class="n">fpp_set</span><span class="p">,</span><span class="n">tp_set</span><span class="p">]):</span>
-        <span class="n">idxs</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">word</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sotu</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="n">doc</span><span class="p">))</span> <span class="k">if</span> <span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">word_set</span><span class="p">]</span>
-        <span class="n">local_neighbors</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">word</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sotu</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="n">doc</span><span class="p">))</span>
-                    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">idxs</span><span class="p">)</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">window_size</span><span class="p">]</span>
-        <span class="n">neighbors</span><span class="p">[</span><span class="n">set_name</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">local_neighbors</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-
-
- 
- 
-<div id="6f8efcdd-8711-46ba-b872-7361c85c48fb"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#6f8efcdd-8711-46ba-b872-7361c85c48fb');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "d66d0a1617434da684555b208658436c", "version_major": 2, "version_minor": 0}
-</script>
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[113]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tot_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">tqdm_notebook</span><span class="p">(</span><span class="n">sotu</span><span class="o">.</span><span class="n">fileids</span><span class="p">()):</span>
-    <span class="n">tot_counts</span> <span class="o">+=</span> <span class="n">Counter</span><span class="p">([</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">sotu</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="n">doc</span><span class="p">)])</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-
-
- 
- 
-<div id="e72e0165-a60b-4e04-b475-dd4abe59db43"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#e72e0165-a60b-4e04-b475-dd4abe59db43');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "8b9e09f83747494aa409843454a91666", "version_major": 2, "version_minor": 0}
-</script>
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div></div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[117]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">log_odds</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">group</span><span class="p">,</span> <span class="n">n_counts</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="n">log_odds</span><span class="p">[</span><span class="n">group</span><span class="p">]</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">word</span><span class="p">,</span><span class="n">count</span> <span class="ow">in</span> <span class="n">n_counts</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
-            <span class="n">log_odds</span><span class="p">[</span><span class="n">group</span><span class="p">][</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">count</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">tot_counts</span><span class="p">[</span><span class="n">word</span><span class="p">])</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[135]:</div>
 <div class="inner_cell">
     <div class="input_area">
@@ -12480,11 +12348,14 @@ his he them her they their him theirs she deprived futures deserve talents dead 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h2><ul>
-<li>Pronouns are a well-validated measure from social psychology.</li>
 <li>If text could <strong>predict</strong> the transition to personalist rule, that would be incredibly cool.</li>
-<li>A crucial next step is generalization beyond idiosyncracies of these three particular leaders.</li>
+<li>A crucial next step is generalization beyond idiosyncracies of these three particular leaders.<ul>
+<li>To what extent are these results due to within-speaker variation?</li>
+<li>To what extent are they due to leader selection?</li>
+</ul>
+</li>
 <li>Co-occurrence analysis mostly supports proposed hypothesis about what each pronoun group does.<ul>
-<li>(But again, within-speaker analysis would make this much more compelling.)</li>
+<li>But again, within-speaker analysis would make this much more compelling.</li>
 </ul>
 </li>
 </ul>
